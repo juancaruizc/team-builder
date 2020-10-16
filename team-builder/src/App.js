@@ -6,19 +6,25 @@ import Form from "./Form";
 const initialFormValues = {
   name: "",
   email: "",
-
   role: "",
+  //   frontEndSoftwareEngineer: false,
+  //   backEndSoftwareEngineer: false,
+  //   fullStackSoftwareEngineer: false,
+  //   machineLearningEngineer: false,
+  //   dataScientist: false,
+  //   uxDesigner:,
+  
 };
 function App() {
   // const [members, setMembers] = useState();
   const [formValues, setFormValues] = useState(initialFormValues);
 
-  const updateForm = (inputName, inputValue) => {
-    setFormValues({
-      ...formValues,
-      [inputName]: inputValue,
-    });
-  };
+  // const updateForm = (inputName, inputValue) => {
+  //   setFormValues({
+  //     ...formValues,
+  //     [inputName]: inputValue,
+  //   });
+  // };
 
   const submitForm = () => {
     let newMember = {
@@ -27,12 +33,13 @@ function App() {
       role: formValues.role,
     };
     if (!newMember.username || !newMember.email || !newMember.role) return;
+    console.log(formValues)
   };
 
   return (
     <div className="App">
       <h1>Working</h1>
-      <Form values={formValues} update={updateForm} submit={submitForm} />
+      <Form values={formValues} submit={submitForm} setFormValues = {setFormValues} />
     </div>
   );
 }

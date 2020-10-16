@@ -1,17 +1,25 @@
 import React from "react";
 
 const Form = (props) => {
-  const { values, update, submit } = props;
+  const { values, update, submit, setFormValues, } = props;
 
   const onChange = (event) => {
     const { name, value } = event.target;
-    update(name, value);
+    setFormValues({
+      ...values,
+      [name]: value,
+    });
+
+    
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
     submit();
   };
+  
+
+
 
   return (
     <form className="form container" onSubmit={onSubmit}>
@@ -42,14 +50,14 @@ const Form = (props) => {
           role
           <select name="role" value={values.role} onChange={onChange}>
             <option value="">select role</option>
-            <option value="">Front-End Software Engineer</option>
-            <option value="">Back-End Software Engineer</option>
-            <option value="">Full Stack Software Engineer</option>
-            <option value="">Machine Learning Engineer</option>
-            <option value="">Data Scientist</option>
-            <option value="">UX Designer</option>
+            <option value="frontEndSoftwareEngineer">Front-End Software Engineer</option>
+            <option value="backEndSoftwareEngineer">Back-End Software Engineer</option>
+            <option value="fullStackSoftwareEngineer">Full Stack Software Engineer</option>
+            <option value="machineLearningEngineer">Machine Learning Engineer</option>
+            <option value="uxDesigner">UX Designer</option>
           </select>
         </label>
+          <button>Submit</button>
       </div>
     </form>
   );
